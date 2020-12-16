@@ -149,20 +149,20 @@ We can calculate summary statistics on the total number of steps per day after h
 ```{r, echo=TRUE}
 # Calculate the average and median of the total number of steps per day after imputation
 stepsSumDayCompleteAverage = round(mean(stepsSumDayComplete$stepsSum),2)
-stepsSumDayCompleteMedian = median(stepsSumDayComplete$stepsSum)
+stepsSumDayCompleteMedian = round(median(stepsSumDayComplete$stepsSum),2)
 
 # Calculate the difference of average and median of the total number of steps per day after and before imputation
-stepsSumDayCompleteAverageDiff = stepsSumDayCompleteAverage - stepsSumDayAverage
-stepsSumDayCompleteMedianDiff = stepsSumDayCompleteMedian - stepsSumDayMedian
+stepsSumDayCompleteAverageDiff = round(stepsSumDayCompleteAverage - stepsSumDayAverage,2)
+stepsSumDayCompleteMedianDiff = round(stepsSumDayCompleteMedian - stepsSumDayMedian,2)
 
 # Compare the average and median of the total number of steps per day after and before imputation
 stepsSumDayCompleteAverageCompare = ifelse(stepsSumDayCompleteAverageDiff > 0, "increased", "decreased")
 stepsSumDayCompleteMedianCompare = ifelse(stepsSumDayCompleteMedianDiff > 0, "increased", "decreased")
 ```
 
-The average total number of steps per day is `r format(stepsSumDayCompleteAverage, digits = 2, nsmall = 2)` (rounded at 2 decimals) and the median is `r format(stepsSumDayCompleteMedian, digits = 1, nsmall = 2)`.
+The average total number of steps per day is `r format(stepsSumDayCompleteAverage, digits = 2, nsmall = 2)` (rounded at 2 decimals) and the median is `r format(stepsSumDayCompleteMedian, digits = 1, nsmall = 2)` (rounded at 2 decimals).
 
-By imputing the missing data, the average total number of steps per day has `r stepsSumDayCompleteAverageCompare` (`r stepsSumDayCompleteAverageDiff`) and the median has `r stepsSumDayCompleteAverageCompare` (`r stepsSumDayCompleteMedianDiff`).
+By imputing the missing data, the average total number of steps per day has `r stepsSumDayCompleteAverageCompare` (`r ifelse(stepsSumDayCompleteAverageDiff > 0, paste0("+", stepsSumDayCompleteAverageDiff), stepsSumDayCompleteAverageDiff)`) and the median has `r stepsSumDayCompleteAverageCompare` (`r ifelse(stepsSumDayCompleteMedianDiff > 0, paste0("+",stepsSumDayCompleteMedianDiff), stepsSumDayCompleteMedianDiff)`).
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

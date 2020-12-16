@@ -168,20 +168,20 @@ We can calculate summary statistics on the total number of steps per day after h
 ```r
 # Calculate the average and median of the total number of steps per day after imputation
 stepsSumDayCompleteAverage = round(mean(stepsSumDayComplete$stepsSum),2)
-stepsSumDayCompleteMedian = median(stepsSumDayComplete$stepsSum)
+stepsSumDayCompleteMedian = round(median(stepsSumDayComplete$stepsSum),2)
 
 # Calculate the difference of average and median of the total number of steps per day after and before imputation
-stepsSumDayCompleteAverageDiff = stepsSumDayCompleteAverage - stepsSumDayAverage
-stepsSumDayCompleteMedianDiff = stepsSumDayCompleteMedian - stepsSumDayMedian
+stepsSumDayCompleteAverageDiff = round(stepsSumDayCompleteAverage - stepsSumDayAverage,2)
+stepsSumDayCompleteMedianDiff = round(stepsSumDayCompleteMedian - stepsSumDayMedian,2)
 
 # Compare the average and median of the total number of steps per day after and before imputation
 stepsSumDayCompleteAverageCompare = ifelse(stepsSumDayCompleteAverageDiff > 0, "increased", "decreased")
 stepsSumDayCompleteMedianCompare = ifelse(stepsSumDayCompleteMedianDiff > 0, "increased", "decreased")
 ```
 
-The average total number of steps per day is 10766.19 (rounded at 2 decimals) and the median is 10766.19.
+The average total number of steps per day is 10766.19 (rounded at 2 decimals) and the median is 10766.19 (rounded at 2 decimals).
 
-By imputing the missing data, the average total number of steps per day has increased (1411.96) and the median has increased (371.1886792).
+By imputing the missing data, the average total number of steps per day has increased (+1411.96) and the median has increased (+371.19).
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
